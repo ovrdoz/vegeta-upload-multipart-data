@@ -19,7 +19,7 @@ func main() {
 	// get image
 	file, err := os.Open("body.txt")
   	if err != nil {
-    	panic(err)
+    		panic(err)
   	}
   	defer file.Close()
   	body := &bytes.Buffer{}
@@ -28,7 +28,7 @@ func main() {
   	writer.WriteField("payload", "content-of-payload")
   	part, err := writer.CreateFormFile("file", filepath.Base(file.Name()))
   	if err != nil {
-    	panic(err)
+    		panic(err)
   	}
   	io.Copy(part, file)
   	writer.Close()
@@ -36,15 +36,15 @@ func main() {
   	rate := vegeta.Rate{Freq: 2, Per: time.Second}
   	duration := 3 * time.Second
   	targeter := vegeta.NewStaticTargeter(vegeta.Target{
-    	Method: "POST",
-    	URL:    "http://localhost:8080/api/path",
-    	Header: header,
-    	Body:   body.Bytes(),
+    		Method: "POST",
+    		URL:    "http://localhost:8080/api/path",
+    		Header: header,
+    		Body:   body.Bytes(),
   	})
   	attacker := vegeta.NewAttacker()
   	var metrics vegeta.Metrics
   	for res := range attacker.Attack(targeter, rate, duration, "Big Bang!") {
-    	metrics.Add(res)
+    		metrics.Add(res)
   	}
   	metrics.Close()
   	fmt.Printf("%v", metrics.StatusCodes) // get status
