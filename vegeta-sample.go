@@ -37,7 +37,7 @@ func main() {
   	duration := 3 * time.Second
   	targeter := vegeta.NewStaticTargeter(vegeta.Target{
     	Method: "POST",
-    	URL:    "ttp://localhost:8080/api/path",
+    	URL:    "http://localhost:8080/api/path",
     	Header: header,
     	Body:   body.Bytes(),
   	})
