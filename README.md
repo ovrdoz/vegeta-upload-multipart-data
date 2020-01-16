@@ -2,7 +2,7 @@
 
 To reduce the complexity of the testing process using vegeta and also the scarcity of good examples from the https://github.com/tsenart/vegeta project, I created here a detailed example for sending files via multipart/form-data.
 
-When submitting a multipart/form-data request in the API server benchmark, the vegeta worker could not be sent without you coding in moon, but Vegeta could easily send the request without writing code.
+When submitting a multipart/form-data request in the API server benchmark, the vegeta worker could not be sent without you coding in golang, but Vegeta could easily send the request without writing code.
 
 By specifying the text describing the request header and request body with the <code>-targets</code> option of the vegeta attack, you can flexibly send HTTP requests.
 
